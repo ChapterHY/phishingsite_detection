@@ -9,16 +9,15 @@ from concurrent.futures import ThreadPoolExecutor
 from urllib.parse import urlparse
 import wordninja
 
-
+## 정상이면 0, 그 외는 다른 숫자로 리턴
 # 1. IP주소 사용 여부 탐지 함수
 def IP_Address_URL(url):
     ip_form = r'\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b'
-    #피싱사이트 =1, 정상 = 0
+    hex_form = r'0[xX][0-9a-fA-F]+'
     if re.search(ip_form, url):
         return 7
     else:
         return 0
-
     
 # 2. 긴 URL 탐지 함수
 def Long_URL(url):
